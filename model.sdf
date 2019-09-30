@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <sdf version="1.5">
-  <model name="cable">
-    <pose>0.2 0 1.2 0 0 0</pose>
+  <model name="cable_fixed">
+    <pose>0.2 0 0.6 0 0 0</pose>
     <joint name="joint_01_world" type="revolute">
       <child>plug</child>
       <parent>world</parent>
@@ -84,11 +84,11 @@
       </visual>
       <velocity_decay />
     </link>
-    <joint name="joint_plug" type="fixed">
+    <joint name="joint_plug" type="revolute">
       <child>link_01</child>
       <parent>plug</parent>
       <axis>
-        <xyz>0.000000 1.000000 0.000000</xyz>
+        <xyz>0.000000 0.000000 0.000000</xyz>
         <limit>
           <lower>-0.700000</lower>
           <upper>0.700000</upper>
@@ -2049,10 +2049,19 @@
       <velocity_decay />
     </link>
 
-<joint name="joint_wall" type="fixed">
+<joint name="joint_wall" type="revolute">
       <child>wall</child>
       <parent>world</parent>
       <axis>
+	<xyz>0.000000 0.000000 0.000000</xyz>
+        <limit>
+          <lower>-0.700000</lower>
+          <upper>0.700000</upper>
+        </limit>
+        <dynamics>
+          <damping>10.000000</damping>
+          <friction>0.000000</friction>
+        </dynamics>
         <use_parent_model_frame>true</use_parent_model_frame>
       </axis>
     </joint>
